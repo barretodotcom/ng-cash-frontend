@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    container_name: ng-cash-frontend
+    image: node:18-alpine3.15
+    restart: 'always'
+    tty: true
+    volumes:
+      - ./:/src/app
+    ports:
+      - 5173:5173
+networks:
+  default:
+    external:
+      name: ng-cash-network

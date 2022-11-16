@@ -1,0 +1,14 @@
+.message-info {
+    position: absolute;
+    left: 35%;
+    top: 5%;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+.error {
+    background-color: #ef4444;
+    padding-inline: 10%;
+    padding-block: 1%;
+    border-radius: 7px;
+}
