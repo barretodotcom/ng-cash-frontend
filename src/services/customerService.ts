@@ -12,6 +12,15 @@ export class CustomerService {
             password
         })
 
-        return response.data;
+        return response;
+    }
+
+    static async createCustomer({ username, password }: ICustomerSession) {
+        const response = await api.post('/customers/create', {
+            username,
+            password
+        })
+
+        return response;
     }
 }

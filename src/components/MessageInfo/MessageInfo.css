@@ -4,10 +4,18 @@
     top: 5%;
     color: white;
     font-family: 'Raleway', sans-serif;
+    font-weight: 500;
 }
 
 .error {
     background-color: #ef4444;
+    padding-inline: 10%;
+    padding-block: 1%;
+    border-radius: 7px;
+}
+
+.sucess {
+    background-color: #1ac84b;
     padding-inline: 10%;
     padding-block: 1%;
     border-radius: 7px;

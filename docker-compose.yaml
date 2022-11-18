@@ -5,6 +5,7 @@ services:
     container_name: ng-cash-frontend
     image: node:18-alpine3.15
     restart: 'always'
+    build: .
     tty: true
     volumes:
       - ./:/src/app

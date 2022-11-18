@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Header from './components/Header/Header'
-import Login from './Pages/Login/Login'
+import Login from './pages/Login/Login'
 import Container from './routes/Container'
 import { AuthProvider } from './context/AuthContext'
 
