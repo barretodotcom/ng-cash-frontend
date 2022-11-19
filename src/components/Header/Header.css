@@ -1,8 +1,17 @@
 .nav-bar {
     display: flex;
     box-sizing: border-box;
-    padding: 3%;
+    padding: 1%;
+    align-items: center;
+    justify-content: flex-end;
     width: 100%;
-    background-color: black;
-    min-height: 10vh;
+    box-sizing: border-box;
+    background-color: #0c0c0c;
+    height: 10vh;
+}
+
+.nav-bar button {
+    padding-inline: 2%;
+    padding-block: 1%;
+    border-radius: 3px;
 }

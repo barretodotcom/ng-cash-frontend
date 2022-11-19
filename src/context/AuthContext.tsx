@@ -15,6 +15,7 @@ interface IAuth {
     signInService: (username: string, password: string) => Promise<void>;
     createCustomerService: (username: string, password: string) => Promise<void>;
     createTransaction: (creditedAccountUsername: string, value: number) => Promise<void>;
+    logout: () => void;
 }
 
 export const AuthContext = createContext<IAuth>({} as IAuth);
@@ -56,7 +57,9 @@ export function AuthProvider({ children }: IAuthProvider) {
         } catch (err: any) {
             if (err.response) {
                 setErrorMessage(err.response.data.message)
+                return;
             }
+            setErrorMessage('Ocorreu um erro, estamos trabalhando nisso!')
             console.log(err);
         }
     }
@@ -64,14 +67,20 @@ export function AuthProvider({ children }: IAuthProvider) {
     async function createCustomerService(username: string, password: string) {
         try {
             const response = await CustomerService.createCustomer({ username, password });
-            setCustomer(response.data.customer);
-            api.defaults.headers.common['Authorization'] = response.data.token;
-            navigation('/you')
+            const customer = response.data.customer;
+            const token = response.data.token;
+            setCustomer(customer)
+            api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+            localStorage.setItem('customer', JSON.stringify(customer));
+            localStorage.setItem('token', token);
+            navigation('/you');
         } catch (err: any) {
             if (err.response) {
-                setErrorMessage(err.response.data.message)
+                setErrorMessage(err.response.data.message);
+                return;
             }
-            console.log(err);
+            setErrorMessage('Ocorreu um erro, estamos trabalhando nisso!')
+
         }
     }
 
@@ -90,10 +99,15 @@ export function AuthProvider({ children }: IAuthProvider) {
         }
     }
 
+    function logout() {
+        localStorage.clear();
+        setCustomer(null);
+    }
+
     if (loading) {
 
         return <h1>
-
+            carre
         </h1>
     }
     return (
@@ -106,7 +120,8 @@ export function AuthProvider({ children }: IAuthProvider) {
             setCustomer,
             signInService,
             createCustomerService,
-            createTransaction
+            createTransaction,
+            logout
         }}>
             {children}
         </AuthContext.Provider>

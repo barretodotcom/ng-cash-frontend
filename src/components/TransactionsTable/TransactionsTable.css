@@ -6,6 +6,13 @@
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.transactions-table-container thead tr {
+    background-color: white;
+    height: 50px;
 }
 
 .transactions-table-container td {
@@ -15,17 +22,31 @@
 
 .transactions-table-container tbody tr {
     border-bottom: thin solid #dddddd;
+    cursor: crosshair;
 }
 
-.transactions-table-container tbody tr:nth-of-type(even) {
+.transactions-table-container tbody tr:nth-of-type(1n) {
     background-color: #f3f3f3;
 }
 
-.transactions-table-container tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+
+.transactions-table-container tbody tr:nth-of-type() {
+    background-color: #f3f3f3;
 }
 
-.transactions-table-container tbody tr.active-row {
-    font-weight: bold;
+
+.transactions-table-container tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+    border-radius: 14px;
+}
+
+
+.transactions-table-container tbody tr:hover {
     color: #009879;
+}
+
+.transactions-table-container thead tr th svg {
+    background-color: #dddddd;
+    border-radius: 5px;
+    cursor: pointer;
 }

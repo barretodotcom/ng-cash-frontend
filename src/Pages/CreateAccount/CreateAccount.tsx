@@ -5,7 +5,7 @@ import './CreateAccount.css';
 
 function CreateAccount() {
 
-    const { setErrorMessage, setCustomer } = useContext(AuthContext)
+    const { setErrorMessage, setCustomer, createCustomerService } = useContext(AuthContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [secondPassword, setSecondPassword] = useState('');
@@ -23,16 +23,7 @@ function CreateAccount() {
             setErrorMessage("As duas senhas precisam ser iguais")
             return;
         }
-        try {
-            const response = await CustomerService.createCustomer({ username, password });
-            setCustomer(response.data);
-
-        } catch (err: any) {
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-            console.log(err);
-        }
+        await createCustomerService(username, password)
     }
 
     return (
